@@ -33,19 +33,73 @@
 
 /* Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0F;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E1E2A;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #6C63FF;
 }
+
+/* Animations */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Simulated Smartphone Styling */
+.phone-glow {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(108, 99, 255, 0.15),
+    0 0 80px rgba(0, 212, 170, 0.05);
+}
+
+.bezel-button {
+  background: linear-gradient(to bottom, #2d2d3d, #1a1a24);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Safe scrollable areas inside mockup */
+.safe-scroll {
+  scrollbar-width: none; /* Firefox */
+}
+
+.safe-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+

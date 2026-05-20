@@ -5,10 +5,8 @@ import {
   Search,
   CheckCircle,
   Car,
-  Shield,
   Trash2,
   Pin,
-  MapPin,
   Compass
 } from 'lucide-react';
 
@@ -116,16 +114,16 @@ const Groups: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in text-[#F0F0F5]">
+    <div className="space-y-4 animate-fade-in text-[#F0F0F5] pb-6">
       {/* Header Info */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col gap-3">
         <div>
-          <h2 className="text-xl font-bold text-white">Wilaya Student Pools (1-58)</h2>
-          <p className="text-xs text-textSecondary mt-1">Manage state-level sharing pools, moderate community descriptions, and pin active rides</p>
+          <h2 className="text-lg font-extrabold text-white">Wilaya Student Pools</h2>
+          <p className="text-[11px] text-textSecondary mt-0.5 leading-relaxed">Manage state-level sharing pools and pin active commutes.</p>
         </div>
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="px-4 py-2 bg-primary hover:bg-primary/95 text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center space-x-2 w-max self-start md:self-auto"
+          className="w-full py-2.5 bg-primary hover:bg-primary/95 text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center space-x-2"
         >
           <Plus className="h-4 w-4" />
           <span>Create New State Pool</span>
@@ -133,37 +131,37 @@ const Groups: React.FC = () => {
       </div>
 
       {/* Search Filter bar */}
-      <div className="glass-card p-4 rounded-2xl flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="glass-card p-4 rounded-xl flex flex-col gap-3">
         {/* Search */}
-        <div className="relative w-full md:w-80">
-          <Search className="absolute left-3.5 top-3 h-4 w-4 text-textSecondary" />
+        <div className="relative w-full">
+          <Search className="absolute left-3.5 top-2.5 h-4 w-4 text-textSecondary" />
           <input
             type="text"
-            placeholder="Search by state name or wilaya code..."
+            placeholder="Search by state name or code..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
+            className="w-full pl-9 pr-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
           />
         </div>
-        <div className="flex items-center space-x-2 bg-white/5 border border-white/5 px-3 py-2 rounded-xl text-xs">
-          <Compass className="h-4 w-4 text-accent" />
-          <span className="text-textSecondary font-semibold">Active Algerian Wilayas Configured: {groups.length}</span>
+        <div className="flex items-center space-x-2 bg-white/5 border border-white/5 px-3 py-2 rounded-xl text-[10px]">
+          <Compass className="h-3.5 w-3.5 text-accent" />
+          <span className="text-textSecondary font-semibold">Active Algerian Wilayas: {groups.length}</span>
         </div>
       </div>
 
       {/* Groups Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-4">
         {filteredGroups.map((grp) => (
-          <div key={grp.id} className="glass-card p-6 rounded-2xl flex flex-col justify-between space-y-5 border border-white/5 hover:border-primary/30">
+          <div key={grp.id} className="glass-card p-4 rounded-xl flex flex-col justify-between space-y-4 border border-white/5 hover:border-primary/30">
             {/* Header: Wilaya Code & Pinned indicator */}
             <div className="flex items-start justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="bg-primary/10 border border-primary/20 text-primary w-11 h-11 rounded-xl flex items-center justify-center font-black text-lg">
+              <div className="flex items-center space-x-2.5">
+                <div className="bg-primary/10 border border-primary/20 text-primary w-9 h-9 rounded-lg flex items-center justify-center font-black text-base">
                   {grp.code}
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-sm leading-tight">{grp.name}</h4>
-                  <span className="text-[10px] text-textSecondary font-mono uppercase font-bold tracking-wider">{grp.id}</span>
+                  <h4 className="font-bold text-white text-xs leading-tight">{grp.name}</h4>
+                  <span className="text-[9px] text-textSecondary font-mono uppercase font-bold tracking-wider">{grp.id}</span>
                 </div>
               </div>
               <button
@@ -176,42 +174,42 @@ const Groups: React.FC = () => {
             </div>
 
             {/* Description */}
-            <p className="text-xs text-[#8A8A9E] leading-relaxed line-clamp-3">{grp.description}</p>
+            <p className="text-[11px] text-[#8A8A9E] leading-relaxed line-clamp-3">{grp.description}</p>
 
             {/* Stats: members & rides */}
-            <div className="grid grid-cols-2 gap-4 border-y border-white/5 py-3 text-xs">
+            <div className="grid grid-cols-2 gap-3 border-y border-white/5 py-2.5 text-xs">
               <div>
-                <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">Students</span>
-                <span className="text-sm font-bold text-white mt-1 block flex items-center space-x-1.5">
-                  <Users2 className="h-4 w-4 text-accent" />
+                <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">Students</span>
+                <span className="text-xs font-bold text-white mt-0.5 block flex items-center space-x-1">
+                  <Users2 className="h-3.5 w-3.5 text-accent" />
                   <span>{grp.memberCount} joined</span>
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">Rides Today</span>
-                <span className="text-sm font-bold text-white mt-1 block flex items-center space-x-1.5">
-                  <Car className="h-4 w-4 text-primary" />
+                <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">Rides Today</span>
+                <span className="text-xs font-bold text-white mt-0.5 block flex items-center space-x-1">
+                  <Car className="h-3.5 w-3.5 text-primary" />
                   <span>{grp.activeRidesCount} active</span>
                 </span>
               </div>
             </div>
 
             {/* Pinned rides log */}
-            <div className="space-y-2">
-              <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider flex items-center space-x-1">
+            <div className="space-y-1.5">
+              <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider flex items-center space-x-1">
                 <Pin className="h-3 w-3 text-primary rotate-45" />
                 <span>Pinned active Commutes ({grp.pinnedRides.length})</span>
               </span>
               {grp.pinnedRides.length > 0 ? (
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1">
                   {grp.pinnedRides.map((ride, idx) => (
-                    <span key={idx} className="bg-white/5 border border-white/5 text-[10px] px-2 py-0.5 rounded font-mono text-white font-semibold">
+                    <span key={idx} className="bg-white/5 border border-white/5 text-[9px] px-1.5 py-0.5 rounded font-mono text-white font-semibold">
                       {ride}
                     </span>
                   ))}
                 </div>
               ) : (
-                <span className="text-[10px] text-textSecondary italic block">No active rides pinned for this wilaya.</span>
+                <span className="text-[9px] text-textSecondary italic block">No active rides pinned.</span>
               )}
             </div>
           </div>
@@ -220,35 +218,35 @@ const Groups: React.FC = () => {
 
       {/* Create State Pool Modal */}
       {isCreateModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-fade-in">
-          <div className="glass-panel w-full max-w-md rounded-2xl p-6 relative border border-white/10 shadow-2xl">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0A0F]/90 backdrop-blur-md animate-fade-in overflow-y-auto safe-scroll">
+          <div className="glass-panel w-full max-w-sm rounded-2xl p-5 relative border border-white/10 shadow-2xl my-auto">
             {/* Title */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/5">
-              <h3 className="text-base font-bold text-white">Create New State Pool</h3>
+            <div className="flex items-center justify-between pb-3 border-b border-white/5">
+              <h3 className="text-sm font-bold text-white">Create New State Pool</h3>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
-                className="text-textSecondary hover:text-white text-base"
+                className="text-textSecondary hover:text-white text-xs"
               >
                 ✕
               </button>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleCreateGroup} className="py-4 space-y-4">
-              <div className="space-y-1.5">
-                <label className="text-xs text-textSecondary font-bold uppercase tracking-wider">Wilaya Name</label>
+            <form onSubmit={handleCreateGroup} className="py-3 space-y-3.5">
+              <div className="space-y-1">
+                <label className="text-[10px] text-textSecondary font-bold uppercase tracking-wider">Wilaya Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Béjaïa"
                   value={newGroupName}
                   onChange={(e) => setNewGroupName(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-white/5 border border-white/5 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50"
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs text-textSecondary font-bold uppercase tracking-wider">Wilaya Code (1-58)</label>
+              <div className="space-y-1">
+                <label className="text-[10px] text-textSecondary font-bold uppercase tracking-wider">Wilaya Code (1-58)</label>
                 <input
                   type="number"
                   required
@@ -256,25 +254,25 @@ const Groups: React.FC = () => {
                   max={58}
                   value={newGroupCode}
                   onChange={(e) => setNewGroupCode(parseInt(e.target.value))}
-                  className="w-full px-4 py-2.5 bg-white/5 border border-white/5 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50 font-mono"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50 font-mono"
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs text-textSecondary font-bold uppercase tracking-wider">Description</label>
+              <div className="space-y-1">
+                <label className="text-[10px] text-textSecondary font-bold uppercase tracking-wider">Description</label>
                 <textarea
                   placeholder="State university hubs description..."
                   value={newGroupDesc}
                   onChange={(e) => setNewGroupDesc(e.target.value)}
                   rows={3}
-                  className="w-full px-4 py-2.5 bg-white/5 border border-white/5 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50 resize-none"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white focus:outline-none focus:border-primary/50 resize-none"
                 />
               </div>
 
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full mt-2 py-3 bg-primary hover:bg-primary/95 text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center space-x-1.5"
+                className="w-full mt-1 py-2.5 bg-primary hover:bg-primary/95 text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center space-x-1.5"
               >
                 <CheckCircle className="h-4 w-4" />
                 <span>Initialize Pool Channel</span>

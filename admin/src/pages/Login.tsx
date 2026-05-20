@@ -50,65 +50,65 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div className="w-full h-full bg-[#0A0A0F] flex flex-col items-center justify-center p-4 relative overflow-y-auto safe-scroll">
       {/* Background glowing blobs */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-primary/20 rounded-full blur-[80px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[350px] h-[350px] bg-accent/15 rounded-full blur-[80px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-primary/10 rounded-full blur-[60px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[200px] h-[200px] bg-accent/10 rounded-full blur-[60px] pointer-events-none"></div>
 
       {/* Main Container */}
-      <div className="w-full max-w-md z-10">
-        <div className="text-center mb-8">
-          <div className="inline-flex bg-primary/10 p-4 rounded-2xl border border-primary/20 mb-4 shadow-lg shadow-primary/5">
-            <ShieldCheck className="h-10 w-10 text-primary animate-pulse" />
+      <div className="w-full z-10 max-w-[340px]">
+        <div className="text-center mb-4">
+          <div className="inline-flex bg-primary/10 p-2.5 rounded-xl border border-primary/20 mb-2 shadow-lg shadow-primary/5">
+            <ShieldCheck className="h-7 w-7 text-primary animate-pulse" />
           </div>
-          <h1 className="text-2xl font-extrabold text-white tracking-wide">Campus Covoiturage</h1>
-          <p className="text-sm text-textSecondary mt-2">Administrative Control Center Login</p>
+          <h1 className="text-lg font-bold text-white tracking-wide">Campus Covoiturage</h1>
+          <p className="text-[11px] text-textSecondary mt-0.5">Control Center Access</p>
         </div>
 
         {/* Form Card */}
-        <div className="glass-card p-8 rounded-2xl relative">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="glass-card p-5 rounded-xl relative">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <div className="p-3.5 bg-emergency/10 border border-emergency/20 text-emergency rounded-xl text-xs font-semibold">
+              <div className="p-2.5 bg-emergency/10 border border-emergency/20 text-emergency rounded-lg text-[10px] font-semibold leading-relaxed">
                 {error}
               </div>
             )}
 
             {/* Email Field */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-textSecondary uppercase tracking-wider">Email Address</label>
+            <div className="space-y-1">
+              <label className="text-[10px] font-bold text-textSecondary uppercase tracking-wider">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-4 top-3.5 h-4 w-4 text-textSecondary" />
+                <Mail className="absolute left-3.5 top-2.5 h-3.5 w-3.5 text-textSecondary" />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@campuscovoiturage.dz"
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/5 rounded-xl text-sm text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
+                  className="w-full pl-9 pr-3 py-2 bg-white/5 border border-white/5 rounded-lg text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
                 />
               </div>
             </div>
 
             {/* Password Field */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-textSecondary uppercase tracking-wider">Password</label>
+            <div className="space-y-1">
+              <label className="text-[10px] font-bold text-textSecondary uppercase tracking-wider">Password</label>
               <div className="relative">
-                <Lock className="absolute left-4 top-3.5 h-4 w-4 text-textSecondary" />
+                <Lock className="absolute left-3.5 top-2.5 h-3.5 w-3.5 text-textSecondary" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-11 pr-12 py-3 bg-white/5 border border-white/5 rounded-xl text-sm text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
+                  className="w-full pl-9 pr-10 py-2 bg-white/5 border border-white/5 rounded-lg text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-3.5 text-textSecondary hover:text-white transition-colors"
+                  className="absolute right-3 top-2.5 text-textSecondary hover:text-white transition-colors"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showPassword ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
                 </button>
               </div>
             </div>
@@ -117,11 +117,11 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 bg-primary hover:bg-primary/95 text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-200 flex items-center justify-center space-x-2"
+              className="w-full py-2.5 bg-primary hover:bg-primary/95 text-white font-bold text-xs rounded-lg shadow-md shadow-primary/20 hover:shadow-primary/30 transition-all duration-200 flex items-center justify-center space-x-1.5"
             >
               {loading ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   <span>Verifying Credentials...</span>
                 </>
               ) : (
@@ -132,17 +132,15 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         </div>
 
         {/* Footer info */}
-        <div className="text-center mt-6">
-          <p className="text-[11px] text-textSecondary">
-            Secured admin panel. Unauthorised attempts are logged and reported.
-          </p>
-          <p className="text-[11px] text-textSecondary mt-2">
-            Demo credentials: <span className="text-accent font-semibold">admin@campuscovoiturage.dz</span> / <span className="text-accent font-semibold">admin123</span>
+        <div className="text-center mt-4">
+          <p className="text-[9px] text-textSecondary leading-normal">
+            Demo admins: <span className="text-accent font-semibold">admin@campuscovoiturage.dz</span> / <span className="text-accent font-semibold">admin123</span>
           </p>
         </div>
       </div>
     </div>
   );
+
 };
 
 export default Login;

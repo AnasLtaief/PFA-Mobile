@@ -398,86 +398,86 @@ const Users: React.FC = () => {
 
       {/* Driver Credentials Verification Modal */}
       {isVerifyModalOpen && selectedStudent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-fade-in">
-          <div className="glass-panel w-full max-w-lg rounded-2xl p-6 relative overflow-hidden border border-white/10 shadow-2xl">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0A0F]/90 backdrop-blur-md animate-fade-in overflow-y-auto safe-scroll">
+          <div className="glass-panel w-full max-w-sm rounded-xl p-5 relative overflow-hidden border border-white/10 shadow-2xl my-auto">
             {/* Title */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/5">
+            <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div>
-                <h3 className="text-lg font-bold text-white">Verify Host Driver Account</h3>
-                <p className="text-xs text-textSecondary mt-0.5">{selectedStudent.fullName}</p>
+                <h3 className="text-sm font-bold text-white">Verify Driver Account</h3>
+                <p className="text-[11px] text-textSecondary mt-0.5">{selectedStudent.fullName}</p>
               </div>
               <button
                 onClick={() => {
                   setIsVerifyModalOpen(false);
                   setSelectedStudent(null);
                 }}
-                className="text-textSecondary hover:text-white text-base"
+                className="text-textSecondary hover:text-white text-sm"
               >
                 ✕
               </button>
             </div>
 
             {/* Document details */}
-            <div className="py-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                  <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">University</span>
-                  <span className="text-xs text-white font-semibold mt-1 block">{selectedStudent.university}</span>
+            <div className="py-4 space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                  <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">University</span>
+                  <span className="text-[10px] text-white font-semibold mt-0.5 block truncate">{selectedStudent.university}</span>
                 </div>
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                  <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">Wilaya / Prefecture</span>
-                  <span className="text-xs text-white font-semibold mt-1 block">{selectedStudent.wilaya}</span>
+                <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                  <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">Wilaya</span>
+                  <span className="text-[10px] text-white font-semibold mt-0.5 block truncate">{selectedStudent.wilaya}</span>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="p-3 bg-white/5 rounded-xl border border-white/5 flex justify-between items-center">
+              <div className="space-y-2">
+                <div className="p-2.5 bg-white/5 rounded-lg border border-white/5 flex justify-between items-center">
                   <div>
-                    <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">Driver License Card</span>
-                    <span className="text-xs font-mono text-white font-bold mt-0.5 block">{selectedStudent.driverLicense}</span>
+                    <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">License Card</span>
+                    <span className="text-[10px] font-mono text-white font-bold mt-0.5 block">{selectedStudent.driverLicense}</span>
                   </div>
-                  <span className="px-2 py-0.5 bg-accent/20 border border-accent/20 text-accent rounded text-[10px] font-bold">ALGERIAN NATIONAL DL</span>
+                  <span className="px-1.5 py-0.5 bg-accent/25 border border-accent/20 text-accent rounded text-[8px] font-bold">DL CARD</span>
                 </div>
 
-                <div className="p-3 bg-white/5 rounded-xl border border-white/5 flex justify-between items-center">
+                <div className="p-2.5 bg-white/5 rounded-lg border border-white/5 flex justify-between items-center">
                   <div>
-                    <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">License Plate Number</span>
-                    <span className="text-xs font-mono text-white font-bold mt-0.5 block">{selectedStudent.licensePlate}</span>
+                    <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">License Plate</span>
+                    <span className="text-[10px] font-mono text-white font-bold mt-0.5 block">{selectedStudent.licensePlate}</span>
                   </div>
-                  <span className="px-2 py-0.5 bg-primary/20 border border-primary/20 text-primary rounded text-[10px] font-bold">REGISTERED VEHICLE</span>
+                  <span className="px-1.5 py-0.5 bg-primary/25 border border-primary/20 text-primary rounded text-[8px] font-bold">VEHICLE</span>
                 </div>
 
-                <div className="p-3 bg-white/5 rounded-xl border border-white/5">
-                  <span className="text-[10px] text-textSecondary uppercase font-bold tracking-wider block">Vehicle Model & Styling</span>
-                  <span className="text-xs text-white font-semibold mt-1 block">{selectedStudent.vehicleModel}</span>
+                <div className="p-2.5 bg-white/5 rounded-lg border border-white/5">
+                  <span className="text-[9px] text-textSecondary uppercase font-bold tracking-wider block">Vehicle Model</span>
+                  <span className="text-[10px] text-white font-semibold mt-0.5 block">{selectedStudent.vehicleModel}</span>
                 </div>
               </div>
 
               {/* ID / Card mock photo display */}
-              <div className="border border-dashed border-white/10 rounded-xl p-6 bg-white/[0.02] text-center">
-                <p className="text-xs text-textSecondary">Verification Photo (Driver ID + Vehicle Plate Verification)</p>
-                <div className="mt-3 inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 text-accent px-4 py-2 rounded-xl text-xs font-bold">
-                  <CheckCircle className="h-4 w-4" />
+              <div className="border border-dashed border-white/10 rounded-lg p-3 bg-white/[0.02] text-center">
+                <p className="text-[10px] text-textSecondary">Verification Photo</p>
+                <div className="mt-2 inline-flex items-center space-x-1.5 bg-accent/10 border border-accent/20 text-accent px-3 py-1 rounded-lg text-[9px] font-bold">
+                  <CheckCircle className="h-3.5 w-3.5" />
                   <span>Face Match Confirmed 98.4%</span>
                 </div>
               </div>
             </div>
 
             {/* Actions Footer */}
-            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-white/5">
+            <div className="flex items-center justify-end space-x-2 pt-3 border-t border-white/5">
               <button
                 onClick={() => handleVerifyDriver(selectedStudent.id, false)}
-                className="px-4 py-2 bg-emergency/15 hover:bg-emergency/20 border border-emergency/20 text-emergency rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5"
+                className="px-3 py-1.5 bg-emergency/15 hover:bg-emergency/20 border border-emergency/20 text-emergency rounded-lg text-[10px] font-bold transition-all flex items-center space-x-1"
               >
-                <XCircle className="h-4 w-4" />
-                <span>Reject & Ban</span>
+                <XCircle className="h-3.5 w-3.5" />
+                <span>Reject</span>
               </button>
               <button
                 onClick={() => handleVerifyDriver(selectedStudent.id, true)}
-                className="px-5 py-2.5 bg-primary hover:bg-primary/95 text-white rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 shadow-lg shadow-primary/20"
+                className="px-3.5 py-2 bg-primary hover:bg-primary/95 text-white rounded-lg text-[10px] font-bold transition-all flex items-center space-x-1 shadow-lg shadow-primary/20"
               >
-                <CheckCircle className="h-4 w-4" />
-                <span>Approve & Verify Driver</span>
+                <CheckCircle className="h-3.5 w-3.5" />
+                <span>Approve & Verify</span>
               </button>
             </div>
           </div>
@@ -486,26 +486,26 @@ const Users: React.FC = () => {
 
       {/* Add Student User Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-fade-in overflow-y-auto">
-          <div className="glass-panel w-full max-w-lg rounded-2xl p-6 relative overflow-hidden border border-white/10 shadow-2xl my-8">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-fade-in overflow-y-auto safe-scroll">
+          <div className="glass-panel w-full max-w-sm rounded-xl p-5 relative overflow-hidden border border-white/10 shadow-2xl my-auto">
             {/* Title */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/5">
+            <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div>
-                <h3 className="text-lg font-bold text-white">Add New Student User</h3>
-                <p className="text-xs text-textSecondary mt-0.5">Quickly provision a student or driver account for testing.</p>
+                <h3 className="text-sm font-bold text-white">Add New Student</h3>
+                <p className="text-[10px] text-textSecondary mt-0.5">Quickly provision a student or driver account for testing.</p>
               </div>
               <button
                 onClick={() => setIsAddModalOpen(false)}
-                className="text-textSecondary hover:text-white text-base"
+                className="text-textSecondary hover:text-white text-sm"
               >
                 ✕
               </button>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleAddStudent} className="py-6 space-y-4 text-left">
+            <form onSubmit={handleAddStudent} className="py-4 space-y-3.5 text-left">
               <div className="space-y-1">
-                <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">Full Name *</label>
+                <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">Full Name *</label>
                 <input
                   type="text"
                   required
@@ -516,9 +516,9 @@ const Users: React.FC = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3.5">
                 <div className="space-y-1">
-                  <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">Email Address *</label>
+                  <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">Email Address *</label>
                   <input
                     type="email"
                     required
@@ -529,7 +529,7 @@ const Users: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">Phone Number *</label>
+                  <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">Phone Number *</label>
                   <input
                     type="text"
                     required
@@ -541,9 +541,9 @@ const Users: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3.5">
                 <div className="space-y-1">
-                  <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">University</label>
+                  <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">University</label>
                   <select
                     value={newStudent.university}
                     onChange={(e) => setNewStudent({ ...newStudent, university: e.target.value })}
@@ -557,7 +557,7 @@ const Users: React.FC = () => {
                   </select>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">Wilaya</label>
+                  <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">Wilaya</label>
                   <select
                     value={newStudent.wilaya}
                     onChange={(e) => setNewStudent({ ...newStudent, wilaya: e.target.value })}
@@ -573,24 +573,24 @@ const Users: React.FC = () => {
               </div>
 
               {/* Role Toggle Option */}
-              <div className="bg-white/[0.02] p-3 rounded-xl border border-white/5 flex items-center justify-between">
+              <div className="bg-white/[0.02] p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-white font-bold block">Register as Driver (Host)</span>
-                  <span className="text-[10px] text-textSecondary block">Check this if the student has a verified vehicle.</span>
+                  <span className="text-[11px] text-white font-bold block">Register as Driver (Host)</span>
+                  <span className="text-[9px] text-textSecondary block">Check this if the student has a verified vehicle.</span>
                 </div>
                 <input
                   type="checkbox"
                   checked={newStudent.isDriver}
                   onChange={(e) => setNewStudent({ ...newStudent, isDriver: e.target.checked })}
-                  className="w-5 h-5 rounded border-white/5 bg-white/5 text-primary focus:ring-primary focus:ring-offset-background cursor-pointer"
+                  className="w-4 h-4 rounded border-white/5 bg-white/5 text-primary focus:ring-primary focus:ring-offset-background cursor-pointer"
                 />
               </div>
 
               {/* Driver-specific details */}
               {newStudent.isDriver && (
-                <div className="space-y-3 p-3 bg-white/5 border border-white/5 rounded-xl animate-fade-in">
+                <div className="space-y-2.5 p-2.5 bg-white/5 border border-white/5 rounded-xl animate-fade-in">
                   <div className="space-y-1">
-                    <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">Driver License Code</label>
+                    <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">Driver License Code</label>
                     <input
                       type="text"
                       placeholder="e.g. DL-2591048-A"
@@ -599,25 +599,25 @@ const Users: React.FC = () => {
                       className="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
-                      <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">Vehicle Model</label>
+                      <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">Vehicle Model</label>
                       <input
                         type="text"
-                        placeholder="e.g. Dacia Sandero (Gray, 2021)"
+                        placeholder="e.g. Dacia Sandero"
                         value={newStudent.vehicleModel}
                         onChange={(e) => setNewStudent({ ...newStudent, vehicleModel: e.target.value })}
-                        className="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-2 py-1.5 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[10px] text-textSecondary uppercase font-bold tracking-wider">License Plate</label>
+                      <label className="text-[9px] text-textSecondary uppercase font-bold tracking-wider">License Plate</label>
                       <input
                         type="text"
                         placeholder="e.g. 01234 121 16"
                         value={newStudent.licensePlate}
                         onChange={(e) => setNewStudent({ ...newStudent, licensePlate: e.target.value })}
-                        className="w-full px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-2 py-1.5 bg-white/5 border border-white/5 rounded-xl text-xs text-white placeholder-textSecondary focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                   </div>
@@ -625,17 +625,17 @@ const Users: React.FC = () => {
               )}
 
               {/* Actions Footer */}
-              <div className="flex items-center justify-end space-x-3 pt-4 border-t border-white/5">
+              <div className="flex items-center justify-end space-x-2.5 pt-3 border-t border-white/5">
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-bold transition-all"
+                  className="px-3.5 py-2 bg-white/5 hover:bg-white/10 text-white rounded-xl text-[10px] font-bold transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-primary hover:bg-primary/95 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-primary/20"
+                  className="px-4 py-2 bg-primary hover:bg-primary/95 text-white rounded-xl text-[10px] font-bold transition-all shadow-lg shadow-primary/20"
                 >
                   Create Student
                 </button>

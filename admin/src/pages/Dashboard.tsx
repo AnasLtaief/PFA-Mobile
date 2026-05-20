@@ -47,107 +47,99 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-5 animate-fade-in pb-4">
       {/* Top Welcome Alert/Banner */}
-      <div className="glass-card p-6 rounded-2xl flex items-center justify-between border-primary/20 bg-gradient-to-r from-primary/5 via-transparent to-transparent">
+      <div className="glass-card p-4 rounded-xl flex flex-col space-y-2 border-primary/10 bg-gradient-to-br from-primary/5 via-transparent to-transparent">
         <div>
-          <h2 className="text-xl font-bold text-white">System Security Level: Standard</h2>
-          <p className="text-sm text-textSecondary mt-1">All real-time Socket.io and emergency monitoring channels are reporting healthy statuses.</p>
+          <h2 className="text-sm font-bold text-white">System Security: Stable</h2>
+          <p className="text-[11px] text-textSecondary mt-0.5 leading-relaxed">All real-time Socket.io and SOS monitoring channels are reporting healthy statuses.</p>
         </div>
-        <div className="flex items-center space-x-2 text-accent font-semibold text-sm">
-          <TrendingUp className="h-4 w-4" />
-          <span>99.8% System Uptime</span>
+        <div className="flex items-center space-x-1.5 text-accent font-semibold text-[11px] border-t border-white/5 pt-1.5">
+          <TrendingUp className="h-3.5 w-3.5" />
+          <span>99.8% Real-Time Uptime</span>
         </div>
       </div>
 
       {/* Stats Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-4">
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="glass-card p-6 rounded-2xl flex flex-col justify-between">
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-xs text-textSecondary font-semibold tracking-wide uppercase">{stat.title}</p>
-                  <h3 className="text-2xl font-bold text-white mt-2">{stat.value}</h3>
-                </div>
-                <div className={`p-3 rounded-xl border ${stat.color}`}>
-                  <Icon className="h-5 w-5" />
-                </div>
+            <div key={idx} className="glass-card p-4 rounded-xl flex items-center justify-between">
+              <div className="min-w-0">
+                <p className="text-[10px] text-textSecondary font-bold tracking-wide uppercase truncate">{stat.title}</p>
+                <h3 className="text-xl font-extrabold text-white mt-1">{stat.value}</h3>
+                <span className="text-[10px] text-textSecondary font-medium mt-1 block truncate">{stat.change}</span>
               </div>
-              <span className="text-xs text-textSecondary font-medium mt-4 block">{stat.change}</span>
+              <div className={`p-2.5 rounded-lg border shrink-0 ${stat.color}`}>
+                <Icon className="h-4.5 w-4.5" />
+              </div>
             </div>
           );
         })}
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-4">
         {/* Main Chart (Area Chart) */}
-        <div className="glass-card p-6 rounded-2xl lg:col-span-2 space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-bold text-white">Rides Frequence & Trends</h3>
-              <p className="text-xs text-textSecondary">Active weekly driver commutes</p>
-            </div>
-            <div className="flex space-x-2">
-              <span className="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-semibold text-white">Weekly</span>
-            </div>
+        <div className="glass-card p-4 rounded-xl space-y-4">
+          <div>
+            <h3 className="text-sm font-bold text-white">Rides Frequence & Trends</h3>
+            <p className="text-[10px] text-textSecondary">Active weekly driver commutes</p>
           </div>
-          <div className="h-72">
+          <div className="h-48 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={mockChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <AreaChart data={mockChartData} margin={{ top: 5, right: 5, left: -25, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorRides" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#6C63FF" stopOpacity={0.4} />
                     <stop offset="95%" stopColor="#6C63FF" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="day" stroke="#52526b" fontSize={11} tickLine={false} />
-                <YAxis stroke="#52526b" fontSize={11} tickLine={false} />
+                <XAxis dataKey="day" stroke="#52526b" fontSize={9} tickLine={false} />
+                <YAxis stroke="#52526b" fontSize={9} tickLine={false} />
                 <Tooltip
                   contentStyle={{
                     background: '#13131A',
                     border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '12px',
+                    borderRadius: '8px',
                     color: '#fff',
-                    fontSize: '12px'
+                    fontSize: '10px'
                   }}
                 />
-                <Area type="monotone" dataKey="rides" stroke="#6C63FF" strokeWidth={2} fillOpacity={1} fill="url(#colorRides)" />
+                <Area type="monotone" dataKey="rides" stroke="#6C63FF" strokeWidth={1.5} fillOpacity={1} fill="url(#colorRides)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Revenue Chart (Bar Chart) */}
-        <div className="glass-card p-6 rounded-2xl space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-bold text-white">Escrow Processing (DA)</h3>
-              <p className="text-xs text-textSecondary">Stripe card-payment payouts</p>
-            </div>
+        <div className="glass-card p-4 rounded-xl space-y-4">
+          <div>
+            <h3 className="text-sm font-bold text-white">Escrow Processing (DA)</h3>
+            <p className="text-[10px] text-textSecondary">Stripe card-payment payouts</p>
           </div>
-          <div className="h-72">
+          <div className="h-48 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={mockChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <XAxis dataKey="day" stroke="#52526b" fontSize={11} tickLine={false} />
-                <YAxis stroke="#52526b" fontSize={11} tickLine={false} />
+              <BarChart data={mockChartData} margin={{ top: 5, right: 5, left: -25, bottom: 0 }}>
+                <XAxis dataKey="day" stroke="#52526b" fontSize={9} tickLine={false} />
+                <YAxis stroke="#52526b" fontSize={9} tickLine={false} />
                 <Tooltip
                   contentStyle={{
                     background: '#13131A',
                     border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '12px',
+                    borderRadius: '8px',
                     color: '#fff',
-                    fontSize: '12px'
+                    fontSize: '10px'
                   }}
                 />
-                <Bar dataKey="revenue" fill="#00D4AA" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="revenue" fill="#00D4AA" radius={[2, 2, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
       </div>
+
 
       {/* Recent Activity Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
